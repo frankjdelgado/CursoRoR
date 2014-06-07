@@ -1,7 +1,9 @@
-<div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<h3>Users</h3>
+			
+			<h3 class="page-header">Users</h3>
+			<br>
+
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -11,25 +13,30 @@
 						<th>Email</th>
 						<th>Birthday</th>
 						<th>Created At</th>
+						<th></th>
 					</tr>	
 				</thead>
 				<tbody>
 
 					<% @users.each_with_index do |user,i| %>
 						<tr>
-							<td><%= i %></td>
-							<td><%= user.name %></td>
+							<td><%= i+1 %></td>
 							<td><%= user.name %></td>
 							<td><%= user.last_name %></td>
 							<td><%= user.email %></td>
 							<td><%= user.birthday %></td>
 							<td><%= user.created_at %></td>
+							<td><%= link_to "edit", edit_user_path(user) %></td>
 						</tr>
 				 	<% end %>
 
 				</tbody>
 			</table>
 
+			<div class="text-right">
+				<%= link_to "Create User", new_user_path %>
+			</div>
+			
 		</div>
 	</div>
-</div>
+

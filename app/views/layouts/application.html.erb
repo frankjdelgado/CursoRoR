@@ -8,7 +8,13 @@
 </head>
 <body>
 
-<%= yield %>
+	<div class="container">
+
+		<%= render :partial => "shared/messages" %>
+
+		<%= yield %>
+
+	<div>
 
 </body>
 </html>

@@ -1,0 +1,10 @@
+<%= semantic_form_for @user do |f| %>
+
+	<%= f.input :name %>
+	<%= f.input :last_name %>
+	<%= f.input :email, :required => true, label: "Email" %>
+	<%= f.input :birthday, as: :string, label: "Birthday" %>
+	<%= f.input :password, :required => true %>
+	<%= f.submit %>
+	
+<% end %>
