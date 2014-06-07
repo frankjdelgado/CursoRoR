@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
+		@user.build_profile
 	end
 
 	#Create New Resource
@@ -40,11 +41,37 @@ class UsersController < ApplicationController
 	end
 
 
+	#Delete resource
+	def destroy
+
+		@user = User.find(params[:id])
+
+		if @user.destroy
+			flash[:notice] = "User deleted succesfully!"
+			redirect_to users_path
+		else
+			flash[:error] = "There was a problem with your request. Please, try again."
+			redirect_to users_path
+		end
+		
+	end
+
+	#Relations
+	def profile
+		@profile = User.find(params[:id]).profile
+
+		if(!@profile)
+			flash[:alert] = "That user doesn't have a profile"
+			redirect_to users_path
+		end
+	end
+
 	#permit params
 	private
 
 	def permit_params
 		params.require(:user).permit!
 	end
+
 
 end

@@ -5,6 +5,22 @@
 	<%= f.input :email, :required => true, label: "Email" %>
 	<%= f.input :birthday, as: :string, label: "Birthday" %>
 	<%= f.input :password, :required => true %>
-	<%= f.submit %>
+
+	<br>
+	<h4>Profile</h4>
+	<br>
+	<%= f.semantic_fields_for :profile do |h| %>
+		<%= h.input :phone %>
+		<%= h.input :country, as: :string %>
+		<%= h.input :city, as: :string%>
+		<%= h.input :zipcode %>
+		<%= h.input :line1 %>
+		<%= h.input :line2 %>
+		<%= h.input :url_gravatar %>
+	<% end %>
+
+	<div class="text-right">
+		<%= f.submit class: 'btn btn-info' %>
+	</div>
 	
 <% end %>

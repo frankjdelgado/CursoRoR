@@ -1,5 +1,14 @@
 Curso::Application.routes.draw do
 
-  resources :users
-  
+  resources :users do
+    member do
+      get :profile
+    end
+  end
+
+  resources :books do
+    resources :comments do
+    end
+  end
+
 end
