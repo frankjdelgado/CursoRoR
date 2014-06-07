@@ -28,7 +28,17 @@
 	    <div class="clearfix"></div>
  		</div>
 
-		<h4 class="page-header">Comments:</h4>	
+		<h4 class="page-header">Comments:</h4>
 
+			<%@book.comments.each do |comment| %>
+				<blockquote>
+				  <p><%=comment.comment%></p>
+				  <footer><%=comment.user.full_name %></footer>
+				</blockquote>
+			<% end %>
+		
+		<div class="text-right">
+			<%= link_to "Add comment", new_book_comment_path(@book), class: 'btn btn-info'%>
+		</div>
 	</div>
 <div>

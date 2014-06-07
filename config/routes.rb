@@ -7,8 +7,11 @@ Curso::Application.routes.draw do
   end
 
   resources :books do
+    
     resources :comments do
     end
   end
+
+  resources :comments
 
 end
