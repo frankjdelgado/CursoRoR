@@ -27,6 +27,14 @@
 	    </div>
 	    <div class="clearfix"></div>
  		</div>
+		
+		<%unless @read%>
+			<div class="text-right">
+				<span><%= link_to "Read", read_book_path, method: :patch, class: 'btn btn-sm btn-success'%></span>
+			</div>
+			
+			<br>
+		<%end%>
 
 		<h4 class="page-header">Comments:</h4>
 
@@ -40,5 +48,8 @@
 		<div class="text-right">
 			<%= link_to "Add comment", new_book_comment_path(@book), class: 'btn btn-info'%>
 		</div>
+
+		<h4 class="page-header">Read by:</h4>
+		<p><%=@book.users.map(&:name).to_sentence%></p>
 	</div>
 <div>

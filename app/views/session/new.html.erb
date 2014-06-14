@@ -1,0 +1,14 @@
+<div class="col-md-offset-4 col-md-4">
+	
+	<h3 class="text-info">Sign In</h3>
+	<br>
+
+	<%= semantic_form_for :user, url: "/session", method: :post do |f| %>
+		<%= f.input :email, :required => true%>
+		<%= f.input :password, :required => true%>
+		<div class="text-right">
+			<%= f.submit "Sign In", class: 'btn btn-info'%>
+		</div>
+	<% end %>
+
+</div>

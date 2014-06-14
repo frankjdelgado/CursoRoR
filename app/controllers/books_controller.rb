@@ -1,7 +1,12 @@
 class BooksController < ApplicationController
 
+	before_action :read?, only: :read
+
 	def show
 		@book = Book.find(params[:id])
+
+		@read = @book.read_by_user?(current_user)
+
 	end
 
 	def index
@@ -52,6 +57,16 @@ class BooksController < ApplicationController
 
 	end
 
+
+	#Read
+	def read
+		book = Book.find(params[:id])	
+
+		book.users << current_user
+
+		redirect_to book_path(book), notice: "Book added to library succesfully!"
+	end
+
 	#permit params
 	private
 
@@ -59,5 +74,13 @@ class BooksController < ApplicationController
 		params.require(:book).permit!
 	end
 
+	def read?
+		book = Book.find(params[:id])
+
+		if book.read_by_user?(current_user)
+			redirect_to book_path(book), notice: "You already have read that book"
+		end
+
+	end
 
 end

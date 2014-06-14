@@ -8,4 +8,8 @@ class Book < ActiveRecord::Base
 		order('title ASC')
 	end
 
+	def read_by_user?(user)
+		users.include?(user)
+	end
+
 end

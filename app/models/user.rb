@@ -17,5 +17,17 @@ class User < ActiveRecord::Base
 		[name, last_name].join(" ")
 	end
 
+	def self.authenticate(email, password)
+		
+		user = User.where(email: email).first
+
+		if user.nil?
+			return nill
+		elsif user.password != password
+			return nill
+		else
+			return user
+		end
+	end
 
 end

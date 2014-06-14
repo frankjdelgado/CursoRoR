@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
 		@book = Book.find(params[:book_id])
 		@comment = Comment.new(permit_params)
 		@comment.book_id = params[:book_id]
+		@comment.user = current_user
 
 		if @comment.save
 			flash[:notice] = "New comment added succesfully!"	
