@@ -13,10 +13,12 @@ class UsersController < ApplicationController
 	#Create New Resource
 	def create
 
-		if User.create(permit_params)
+		@user = User.new(permit_params)
+		if @user.save
 			flash[:notice] = "New user created succesfully!"
 			redirect_to users_path
 		else
+			flash[:alert] = @user.errors.full_messages.to_sentence
 			render 'new'
 		end
 
@@ -66,7 +68,7 @@ class UsersController < ApplicationController
 			flash[:alert] = "That user doesn't have a profile nor books"
 			redirect_to users_path
 		end
-		
+
 	end
 
 	#permit params

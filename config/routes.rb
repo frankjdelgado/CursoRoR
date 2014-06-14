@@ -14,4 +14,6 @@ Curso::Application.routes.draw do
 
   resources :comments
 
+  root 'books#index'
+  
 end
