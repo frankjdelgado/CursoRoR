@@ -7,7 +7,7 @@
 	<%= f.input :password, :required => true %>
 
 	<br>
-	<h4>Profile</h4>
+	<h4 class="text-info">Profile</h4>
 	<br>
 	<%= f.semantic_fields_for :profile do |h| %>
 		<%= h.input :phone %>
@@ -18,6 +18,11 @@
 		<%= h.input :line2 %>
 		<%= h.input :url_gravatar %>
 	<% end %>
+
+	<br>
+	<h4 class="text-info">Books</h4>
+	<br>
+	<%= f.input :books, label: false, as: :check_boxes %>
 
 	<div class="text-right">
 		<%= f.submit class: 'btn btn-info' %>

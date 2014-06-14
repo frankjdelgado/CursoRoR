@@ -58,12 +58,15 @@ class UsersController < ApplicationController
 
 	#Relations
 	def profile
-		@profile = User.find(params[:id]).profile
 
-		if(!@profile)
-			flash[:alert] = "That user doesn't have a profile"
+		@profile = User.find(params[:id]).profile
+		@books = User.find(params[:id]).books.map(&:title).to_sentence
+
+		if(!@profile && !@books)
+			flash[:alert] = "That user doesn't have a profile nor books"
 			redirect_to users_path
 		end
+		
 	end
 
 	#permit params
